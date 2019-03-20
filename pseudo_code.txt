@@ -1,0 +1,49 @@
+Adopt a Pet Pseudocode.
+
+1.	Create a string global variable to store the breed name. DONE
+
+2.	When user clicks "submit" button (id = "submit_button"): DONE
+
+		clear results box (id = "results") DONE
+
+		clear description box (id = "pet_description") DONE
+
+		if text box is empty (id = "text_box")
+
+			display modal message that the text box is blank (id = "pet_description")
+
+		else	send api get request to pet finder (in ajax statement)
+
+			send api get request to wikipedia to get pet description (in ajax statement)
+
+			if there is no result from pet finder api
+
+				display "no results found" (id = "pet_description")
+
+			else display pet description from wikipeida to id = "pet_description"
+
+			     if there are more than 8 results
+
+				  output first 8 pictures of pets, names, shelter names, addresses, and phone numbers into (id = "results")
+
+			     else output all results' pictures of pets, names, shelter names, addresses, and phone numbers into (id = "results")
+
+		clear text box (id = "text_box") DONE
+
+
+
+		
+
+			
+
+		
+
+		
+
+	
+	
+		
+
+
+
+	

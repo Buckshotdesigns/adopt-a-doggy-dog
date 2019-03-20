@@ -1,0 +1,112 @@
+<!--  
+Project Title:	Adopt A Pet.
+Team Members:	
+Alex Chalyy     Bryan Buckus	Ron Seide	Napoleon Stephen Wilson III
+
+Project Description:
+This project accepts a dog breed from a dropdown menu, displays a dog breed description, and displays 6 or less local animal shelter pets of that breed. For each pet, an images of the pet is displayed along with the name, location and contact phone number. If there are less than 6 results, less results are returned. If there are no results, message stating that there no results is printed. 
+
+APIs to be used:
+https://www.mediawiki.org/wiki/API:Main_page
+https://www.petfinder.com/developers/api-docs
+
+Breakdown of tasks:
+Front end:	Alex Chalyy/Napoleon Stephen Wilson III
+Back end:	Bryan Buckus/Ron Seide
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adopt A Doggie Dog!</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!--    This is a pop-up modal windown that pops up when incorrect dog breed is entered. -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Woof Woof!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Wolverine is not a dog!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- This is static body of html file. -->
+    <div class="container" id="c1">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12" id="title">
+                        <h3>Adopt A Doggie Dog!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 disclaimer">
+                        <h7>Interested in rescuing a dog from a shelter in Greater Cleveland? Select a
+                            breed from the dropdown to see local dogs and helpful information!</h7>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="search">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle black" data-toggle="dropdown"
+                                id="dropdown">
+                                Select breed
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" data-value=0 value="Pit Bull Terrier">Pitbull</a>
+                                <a class="dropdown-item" href="#" data-value=1 value="Chihuahua">Chihuahua</a>
+                                <a class="dropdown-item" href="#" data-value=2 value="Boxer">Boxer</a>
+                                <a class="dropdown-item" href="#" data-value=3 value="American Bulldog">Bulldog</a>
+                                <a class="dropdown-item" href="#" data-value=4 value="Pug">Pug</a>
+                                <a class="dropdown-item" href="#" data-value=5 value="myModal">Wolverine</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="pet_row">
+            <div class="col-sm-12" id="pet_description">
+            </div>
+        </div>
+        <div class="row" id="results"></div>
+        <div id="bryansModal" class="big-modal">
+
+            <!-- The Close Button -->
+            <span class="close-now">&times;</span>
+          
+            <!-- Modal Content (The Image) -->
+            <img class="modal-picture" id="img01">
+          
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+          </div>
+        <div id="spinner" style="position:fixed;top:50%;left:50%"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script src="assets/javascript/script.js"></script>
+</body>
+
+</html>
