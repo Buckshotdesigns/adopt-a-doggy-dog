@@ -92,6 +92,17 @@ body    {
     }
 }
 
+@media (max-width: 1024px)  {
+    #bryansModal  {
+      /*width: 85%;*/
+      width: 20rem;
+      background: yellow;
+    }
+    .close-now  {
+      padding-top: 1%;
+    }
+}
+
 /* Style the Image Used to Trigger the Modal */
 #dog-pic {
     border-radius: 5px;
