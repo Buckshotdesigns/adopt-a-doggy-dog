@@ -114,6 +114,11 @@ $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
         var target = document.getElementById("spinner");
         spinner = new Spinner(opts).spin(target);
+
+                //  This clears results before running all api get calls.
+
+                $("#pet_description").empty();
+                $("#results").empty();
         
         //  This funciton is called when user selects a dog breed from the drop down menu.
         //  This sets up all variables for api get calls.
@@ -127,11 +132,6 @@ $(document).ready(function () {
         var getDog = [$(this).attr("data-value")];
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles=" + dogBreed[getDog].dog;
 
-        //  This clears results before running all api get calls.
-
-        $("#pet_description").empty();
-        $("#results").empty();
-
         //  This activates pop-up message when user enters wolverine
 
         if (breed == "myModal") {
@@ -144,6 +144,9 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (response) {
+                 // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                $("#pet_description").empty();
+                $("#results").empty();
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 console.log("This is wiki response: ");
@@ -161,6 +164,9 @@ $(document).ready(function () {
             }).then(function (response) {
                 console.log("This is Pet Finder response: ");
                 console.log(response);
+                // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                $("#pet_description").empty();
+                $("#results").empty();
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 dogResponse = response;
