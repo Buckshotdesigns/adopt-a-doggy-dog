@@ -92,6 +92,46 @@ body    {
     }
 }
 
+/*  This styles dog pop-up window on mobile screens.  */
+
+@media (max-width: 1024px)  {
+    #bryansModal  {
+      width: 20rem;
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+    .close-now  {
+      padding-top: 1%;
+      margin-top: -8%;
+      margin-right: -5%;
+    }
+    .modal-picture  {
+      size: 20%;
+    }
+}
+
+/*@media (max-height: 1366px) {
+#bryan
+} */
+/*
+@media (max-height: 1366px) {
+  #bryansModal  {
+    width: 40rem;
+    background: yellow;
+  }
+  .close-now  {
+    padding-top: 5%;
+    padding-right: 5%;
+  }
+} */
+/*
+@media (max-height: 1024px) and (max-width: 1366px)  {
+  .close-now  {
+    padding-top: 1%;
+    padding-right: 1%;
+  }
+} */
+
 /* Style the Image Used to Trigger the Modal */
 #dog-pic {
     border-radius: 5px;
