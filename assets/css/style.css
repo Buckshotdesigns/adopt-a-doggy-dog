@@ -92,14 +92,21 @@ body    {
     }
 }
 
+/*  This styles dog pop-up window on mobile screens.  */
+
 @media (max-width: 1024px)  {
     #bryansModal  {
-      /*width: 85%;*/
       width: 20rem;
-      background: yellow;
+      padding-top: 5%;
+      padding-bottom: 5%;
     }
     .close-now  {
       padding-top: 1%;
+      margin-top: -8%;
+      margin-right: -5%;
+    }
+    .modal-picture  {
+      size: 20%;
     }
 }
 
