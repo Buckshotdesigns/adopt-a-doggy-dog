@@ -5,7 +5,7 @@
 
 # Description:
 
-  In this project, the website developed was based on dog breed selected,  it outputs 4 Cleveland area animal shelter search results that are open to adoption, including dog name, dog picture, city, phone number, and e-mail. It outputs "not available" if one of the search results is not available. Click on the image to learn more about each pet 
+  In this project, the website developed was based on selecting a dog by breed to seach Cleveland area animal shelters that are open to adoption, including dog name, dog picture, city, phone number, and e-mail. It outputs "not available" if one of the search results is not available. Click on the image to learn more about each pet. 
 
 # Project Creation Process:
 
