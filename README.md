@@ -1,6 +1,6 @@
 # Adopt a Doggy Dog
 <p align="center">
-![dog](https://user-images.githubusercontent.com/31428973/61819931-035c1c00-ae22-11e9-8ac1-1abfcfd85f1f.gif)
+<img width="750" height="400" src="https://user-images.githubusercontent.com/31428973/61819931-035c1c00-ae22-11e9-8ac1-1abfcfd85f1f.gif">
 </p>
 
 # Description:
