@@ -1,5 +1,8 @@
 # Adopt a Doggy Dog
 
+![dog](https://user-images.githubusercontent.com/31428973/61819931-035c1c00-ae22-11e9-8ac1-1abfcfd85f1f.gif)
+
+
 # Description:
 
 In this project, a website is developed that based on dog breed selected, outputs 4 Cleveland area animal shelter search results that are open to adoption, including dog name, dog picture, city, phone number, and e-mail. It outputs "not available" if one of the search results is not available.
