@@ -5,8 +5,23 @@
 
 # Description:
 
-  In this project, the website developed was based on selecting a dog by breed to seach Cleveland area animal shelters that are open to adoption, including dog name, dog picture, city, phone number, and e-mail. It outputs "not available" if one of the search results is not available. Click on the image to learn more about each pet. 
+  In this project, the website developed was based on selecting a dog by breed to search Cleveland area animal shelters that are open to adoption so users can choose a dog locally if they are searching for a specific breed. 
+  
+  ### Functionality
+  When the page loads you can choose the breed of dog from the dropdown menu. After choosing the the breed, a desription of the breed loads and the shelter search results include dog name, dog picture, city, phone number, and e-mail load below. It outputs "not available" if one of the search results is not available. Click on the image to learn more about each pet, based on the available info from each shelter. 
 
-# Project Creation Process:
+### Demo:  adopt-a-doggy-dog.herokuapp.com
 
-  The HTML page was created and styled using bootstrap, css, and media queries to be mobile responsive. Javascript was written using jQuery which made ajax petfinder and wikipedia API get calls to display dog breed description, pics, and other descriptions on screen dynamically. Timer, bootstrap modal pop-up window, and spinner javascript were used as well.
+### Technologies implemented
+- HTML
+- CSS
+- AJAX using API calls from Petfinder and WIkipedia
+- Javascript
+- Jquery
+- Modal
+- Spinner.Js
+
+### Contribution by
+This was a group project for coding bootcamp at Case Western Reserve University and following individuals contributed to this project. 
+
+Alex C., Ron S., Bryan B.
