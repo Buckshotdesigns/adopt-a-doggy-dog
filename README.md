@@ -10,7 +10,7 @@
   ### Functionality
   When the page loads you can choose the breed of dog from the dropdown menu. After choosing the the breed, a desription of the breed loads and the shelter search results include dog name, dog picture, city, phone number, and e-mail load below. It outputs "not available" if one of the search results is not available. Click on the image to learn more about each pet, based on the available info from each shelter. 
 
-### Demo:  [https://adopt-a-doggy-dog.herokuapp.com]
+### Demo:  https://adopt-a-doggy-dog.herokuapp.com
 
 ### Technologies implemented
 - HTML
