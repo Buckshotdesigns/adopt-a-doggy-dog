@@ -95,6 +95,9 @@ function displayAll() {
         if(!dogEmail)   {
             dogEmail = "Not Available";
         }
+        if(!dogDescription) {
+            dogDescription = "No description available";
+        }
 
         // console.log("dog photo = " + dogPhoto);
         // console.log("i = " + i);
