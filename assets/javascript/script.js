@@ -55,22 +55,25 @@ var title;
 var dogResponse;
 var spinner;
 var modalArray = [];
+
 function displayAll() {
     spinner.stop();
 
     $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><p id = \"paragraph\">" +
     results.toString() + "</p></div>");
 
-    for (var i = 0; i < 4; i++) {
-        var dogData = dogResponse.petfinder.pets.pet[i];
-        var dogPhoto = dogData.media.photos.photo[2].$t;
-        var dogName = dogData.name.$t;
-        var dogLocation = dogData.contact.city.$t;
-        var dogPhone = dogData.contact.phone.$t;
-        var dogEmail = dogData.contact.email.$t;
-        var dogDescription = dogData.description.$t;
-        var dogAge = dogData.age.$t;
-        var dogGender = dogData.sex.$t;
+    for (var i = 0; i < 8; i++) {
+        var dogData = dogResponse.animals[i];
+        var dogPhotoGeneral = dogData.primary_photo_cropped;
+        var dogPhoto = dogData.primary_photo_cropped.medium;
+        var dogName = dogData.name;
+        var dogLocation = dogData.contact.address.city;
+        var dogPhone = dogData.contact.phone;
+        var dogEmail = dogData.contact.email;
+        var dogDescription = dogData.description;
+        var dogAge = dogData.age;
+        var dogGender = dogData.gender;
+        var dogUrl = dogData.url;
         
         
         //sanitize nulls
@@ -83,6 +86,9 @@ function displayAll() {
         if(!dogPhone) {
             dogPhone = "Not Available";
         }
+        if(!dogPhotoGeneral) {
+            dogPhoto = "";
+        }
         if(!dogPhoto) {
             dogPhoto = "";
         }
@@ -94,17 +100,18 @@ function displayAll() {
         // console.log("i = " + i);
 
         var result = ""
-            + "<div class=\"col-sm-3 pic\">" 
-                + "<p><b>" + dogName.toString() + "</b></p>"
-                + "<p>" + dogLocation.toString() + "</p>"
-                + "<p>" + dogPhone.toString() + "</p>"
-                + "<p id = \"dogemail\">" + dogEmail.toString() + "</p>"
+            + "<div class= 'dog-column col-lg-3 col-sm-6 col-xs-12 pic'>" 
+                + "<p><b>Name: " + dogName + "</b></p>"
+                + "<p><b>Gender: " + dogGender + "</b></p>"
+                + "<p>Location: " + dogLocation + "</p>"
+                + "<p>Phone: " + dogPhone + "</p>"
+                // + "<p id = \"dogemail\">" + dogEmail + "</p>"
                 + "<img id=\"dog-pic\""
-                    + " src=" + dogPhoto.toString() 
+                    + " src=" + dogPhoto 
                     + " class = \"dogImage\">"
             + "</div>";
         $("#results").prepend(result);
-        $("#dog-pic").attr({"data-name": dogName, "data-age": dogAge,"data-gender": dogGender,"data-description": dogDescription,});
+        $("#dog-pic").attr({"data-name": dogName, "data-age": dogAge,"data-gender": dogGender,"data-description": dogDescription, "data-email": dogEmail, "data-url": dogUrl});
 
     }
 }
@@ -127,8 +134,8 @@ $(document).ready(function () {
 
         //Generate API URLs for Petfinder and Wikipedia.
 
-        var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
-        var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
+        // var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
+        // var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
         var getDog = [$(this).attr("data-value")];
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles=" + dogBreed[getDog].dog;
 
@@ -147,8 +154,8 @@ $(document).ready(function () {
                  // this call is to fix a bug where petfinder and Wiki returns two sets of results
                 $("#pet_description").empty();
                 $("#results").empty();
-                window.clearTimeout(timerHandle);
-                timerHandle = window.setTimeout(displayAll, 500);
+                // window.clearTimeout(timerHandle);
+                // timerHandle = window.setTimeout(, 500);
                 console.log("This is wiki response: ");
                 console.log(response);
                 dogPage = dogBreed[getDog].pagenumber;
@@ -157,19 +164,52 @@ $(document).ready(function () {
             });
 
             // Petfinder API call.
-            $.ajax({
-                url: pfUrl,
-                dataType: 'jsonp',
-                method: "GET"
+            // $.ajax({
+            //     url: pfUrl,
+            //     dataType: 'jsonp',
+            //     method: "GET"
+            var key = "oVEGFoYuOdukzVqcbAly16E4hwE738IZznSitbXcyzuUYaVoQp";
+	var secret = "mU2aApg5ENe1Myzu73srJCx7cE341xtHk11izjgt";
+	fetch('https://api.petfinder.com/v2/oauth2/token', {
+		method: 'POST',
+		body: 'grant_type=client_credentials&client_id=' + key + '&client_secret=' + secret,
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		}
+	}).then(function (resp) {
+
+		// Return the response as JSON
+		return resp.json();
+
+	}).then(function (data) {
+
+		// Log the API data
+		console.log('token', data);
+
+		// Return a second API call
+		// This one uses the token we received for authentication
+		return fetch('https://api.petfinder.com/v2/animals?type=dog&location=cleveland, ohio;&breed=' + breed + '&limit=20', {
+			headers: {
+				'Authorization': data.token_type + ' ' + data.access_token,
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		});
+
+	}).then(function (response) {
+
+		// Return the API response as JSON
+		return response.json();
+
             }).then(function (response) {
                 console.log("This is Pet Finder response: ");
-                console.log(response);
+                // console.log(response);
                 // this call is to fix a bug where petfinder and Wiki returns two sets of results
                 $("#pet_description").empty();
                 $("#results").empty();
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 dogResponse = response;
+                console.log(dogResponse);
             });
         }
         
@@ -196,11 +236,16 @@ $(document).ready(function () {
             dataDescription = $(this).attr("data-description");
             dataAge = $(this).attr("data-age");
             dataGender = $(this).attr("data-gender");
+            dataEmail = $(this).attr("data-email");
+            dataUrl = $(this).attr("data-url");
+
 
             captionText.append("<h3>" + dataName + "</h3>");
             captionText.append("<h3> Age :  " + dataAge + "</h3>");
             captionText.append("<h3> Gender:  " + dataGender + "</h3>");
-            captionText.append(dataDescription);
+            captionText.append("<h3 class='modal-email'> Email:  " + dataEmail + "</h3>");
+            captionText.append(dataDescription + "</br>");
+            captionText.append("<a href='" + dataUrl + "' target='_blank'><button class='btn btn-primary more-info'>More info</button></a>");
 
 
         });

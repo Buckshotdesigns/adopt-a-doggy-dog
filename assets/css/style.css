@@ -81,15 +81,33 @@ body    {
     margin-right: 1px;
 }
 
+.more-info {
+  margin: 5% 0;
+}
+.modal-email {
+  word-wrap: break-word;
+}
 /*  This increases the image sizes on small screens so they are stacked on top of one another.   */
-
+@media (max-width: 992px) {
+  .dogImage {
+    height: 300px;
+  }
+}
 @media (max-width: 900px) {
     .pic    {
         width: 100%;
     }
-    #results    {
+    /* #results    {
         font-size: 50%;
-    }
+    } */
+}
+@media (max-width: 576px) {
+  .dogImage {
+    width: 70%;
+  }
+  .dog-column {
+    text-align: center;
+  }
 }
 
 /* Style the Image Used to Trigger the Modal */
