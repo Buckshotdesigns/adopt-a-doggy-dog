@@ -29,7 +29,7 @@ var dogBreed = [
     pagenumber: "123",
   },
 ];
-// Sets parameters for spin.js spinner
+// Sets parameters for spin.js spinner and then some
 var opts = {
   lines: 10, // The number of lines to draw
   length: 7, // The length of each line
